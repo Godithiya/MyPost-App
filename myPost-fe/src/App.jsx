@@ -6,6 +6,7 @@ import Home from './screen/homeScreen/Home'
 import Layout from './screen/Layout'
 import genereteToken from './token/GenereteToken'
 import Profile from './screen/profile/Profile'
+import MyPost from './screen/my_post/MyPost'
 
 const App = () => {
   
@@ -44,7 +45,8 @@ const App = () => {
       <Route path='/' element={<Layout/>} >
       <Route index element={<Home/>}/>
       <Route path='profile'  element={<Profile onLogOut={() => seetIsLogin(false)}/>}/>
-      <Route path='*' element={<h1 className='flex justify-center items-center w-screen font-bold text-3xl h-screen' >Page Not Found</h1>}/>
+      <Route path='my_post' element={<MyPost/>} />
+      <Route path='*' element={<h1 className='flex justify-center items-center w-screen font-bold text-3xl h-screen' >Page Not Found!</h1>}/>
       </Route>
     </Routes>
   )

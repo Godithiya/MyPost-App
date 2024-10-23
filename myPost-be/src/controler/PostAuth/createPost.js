@@ -6,11 +6,12 @@ const createPost = async (req = request, res = response) => {
     const { judul, body } = req.body;
 
     try {
-        
+        // Mencari user berdasarkan userId
         const userExists = await db.user.findUnique({
             where: { id: userId }
         });
 
+        // Jika user tidak ditemukan, kembalikan status 404
         if (!userExists) {
             return res.status(404).json({
                 success: false,
@@ -18,15 +19,17 @@ const createPost = async (req = request, res = response) => {
             });
         }
 
+        // Buat post baru dengan asosiasi ke userId yang valid
         const newPost = await db.post.create({
             data: {
                 judul,
                 body,
-                userId
+                userId, // UserId diambil dari request
+                author: userExists.name // Nama diambil dari user yang ditemukan
             }
         });
 
-      
+        // Kembalikan respons sukses dengan data post yang baru dibuat
         res.status(201).json({
             success: true,
             message: "Post created successfully",

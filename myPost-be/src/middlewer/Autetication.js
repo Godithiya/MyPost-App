@@ -13,7 +13,7 @@ const Autetication = async (req, res, next) => {
     if(splitToken.length !== 2 || splitToken[0] !== "Bearer") {
         return res.status(500).json({
             default: false,
-            message : "token invalide bree"
+            message : "token invalid bree"
         })
     }
 

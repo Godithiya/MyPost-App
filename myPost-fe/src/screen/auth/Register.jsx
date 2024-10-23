@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Register = () => {
 
@@ -13,8 +13,11 @@ const Register = () => {
     }
   }
 
+  const navigate = useNavigate()
+
   function handleSubmit(e) {
     e.preventDefault()
+    navigate('/')
 
     let name = e.target.name.value
     let email = e.target.email.value
@@ -31,7 +34,7 @@ const Register = () => {
 
   return (
     <div className='w-screen h-screen bg-[#BDE0FE] flex flex-col items-center justify-center'>
-      <div className='w-[80%] bg-white h-[600px] shadow-2xl mt-5 rounded-lg'>
+      <div className='w-[80%] bg-white h-auto shadow-2xl mt-5 rounded-lg pb-6'>
         <h1 className='mt-10 text-center font-bold text-xl mb-5 text-[#9ec8ec]'>Register Page</h1>
         <form className='px-5 flex flex-col gap-2' onSubmit={handleSubmit}>
           <span className='flex flex-col gap-1 mt-2'>
@@ -61,7 +64,7 @@ const Register = () => {
           <button className='bg-[#9ec8ec] text-white px-5 py-2 mt-4 rounded-md'>
             <span className='drop-shadow-2xl'>Submit</span>
           </button>
-          <p className='text-[10px] text-end -mt-2'>Sudah punya Akun? // silahkan <Link to={'/'} className='text-[#7a9dbd]'>Login</Link> page</p>
+          <p className='text-[10px] text-end -mt-0'>Sudah punya Akun? // silahkan <Link to={'/'} className='text-[#7a9dbd]'>Login</Link> page</p>
         </form>
       </div>
     </div>

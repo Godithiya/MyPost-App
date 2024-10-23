@@ -27,5 +27,8 @@ model Post {
   judul      String
   body       String
   userId     Int 
+  author     String?
+  createAt   DateTime?      @default(now())
+  updateAt   DateTime?      @updatedAt
   users      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
